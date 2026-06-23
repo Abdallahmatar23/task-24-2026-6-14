@@ -37,7 +37,11 @@
 
                             <h2 class="mb-4">Get In Touch</h2>
 
-                            <form id="contact-form" class="contact-form">
+                            <form method="POST" action="{{ url('store-contact') }}" id="contact-form" class="contact-form">
+
+
+                                @csrf
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
