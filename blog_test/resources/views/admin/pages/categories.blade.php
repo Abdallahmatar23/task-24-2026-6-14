@@ -1,7 +1,6 @@
-<?php
-//  showSuccessMessage();
-// $Categories = $Categories ?? [] ;
-?>
+@if (session('success'))
+    <div>{{ session('success') }}</div>
+@endif
 
 <main id="main" class="main">
 
@@ -31,7 +30,7 @@
 
                             <a href="" class="btn btn-success">
                                 <i class="bi bi-plus-circle me-1"></i>
-                                Add Product
+                                Add Category
                             </a>
                         </div>
 
@@ -49,42 +48,39 @@
 
                             <tbody>
 
-                                @foreach($Categories as $product)
+                                @foreach ($Categories as $category)
+                                    <tr>
+                                        <td></td>
 
-                                <tr>
-                                    <td></td>
+                                        <td></td>
 
-                                    <td></td>
-
-                                    <td></td>
+                                        <td></td>
 
 
-                                    <td><td>
+                                        <td>
+                                        <td>
 
-                                        <div class="btn-group">
+                                            <div class="btn-group">
 
-                                            <a href=""
-                                                class="btn btn-primary btn-sm">
-                                                Edit
-                                            </a>
+                                                <a href="" class="btn btn-primary btn-sm">
+                                                    Edit
+                                                </a>
 
-                                            <form method="POST"
-                                                action=""
-                                                onsubmit="return confirm('Are you sure you want to delete this product?')">
+                                                <form method="POST" action=""
+                                                    onsubmit="return confirm('Are you sure you want to delete this category?')">
 
-                                                <input type="hidden" name="id" value="">
+                                                    <input type="hidden" name="id" value="">
 
-                                                <button type="submit" class="btn btn-danger btn-sm">
-                                                    Delete
-                                                </button>
+                                                    <button type="submit" class="btn btn-danger btn-sm">
+                                                        Delete
+                                                    </button>
 
-                                            </form>
+                                                </form>
 
-                                        </div>
+                                            </div>
 
-                                    </td>
-                                </tr>
-
+                                        </td>
+                                    </tr>
                                 @endforeach
 
                             </tbody>

@@ -30,7 +30,7 @@
                             <!-- Description -->
                             <div class="mb-3">
                                 <label class="form-label">Description</label>
-                                <input type="text" name="desc" class="form-control"
+                                <input type="text" name="description" class="form-control"
                                     placeholder="Enter category description" value="">
                             </div>
 
