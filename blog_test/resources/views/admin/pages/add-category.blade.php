@@ -1,3 +1,8 @@
+@extends('admin.layouts.master')
+@section('title', 'Revolve - Personal Magazine blog Template')
+
+@section('content')
+
 <main id="main" class="main">
 
     <div class="pagetitle">
@@ -16,7 +21,7 @@
                             <small class="text-muted">Fill all required fields below</small>
                         </div>
 
-                        <form method="POST" action="" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('store-category') }}" enctype="multipart/form-data">
 
                             <!-- Title -->
                             <div class="mb-3">
@@ -57,3 +62,6 @@
     </section>
 
 </main>
+
+
+@endsection

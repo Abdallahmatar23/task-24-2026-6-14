@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -13,10 +14,22 @@ Route::get('about', [AboutController::class, 'index'])->name('about');
 
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
 
-Route::get('category', function () {
-    return view('client.pages.fashion');
-})->name('category');
+Route::get('category', [CategoryController::class, 'index'])->name('category');
 
+Route::get('all-categories', [CategoryController::class, 'admin'])->name('all-categories');
+
+Route::get('create-category', [CategoryController::class, 'create'])->name('create-category');
+
+Route::post('store-category', [CategoryController::class, 'store'])->name('store-category');
+
+Route::get('edit-category/{id}', [CategoryController::class, 'edit'])->name('edit-category');
+
+Route::post('update-category', [CategoryController::class, 'update'])->name('update-category');
+
+
+Route::post('delete-category', [CategoryController::class, 'destroy'])->name('delete-category');
+
+Route::post('store-contact', [ContactController::class, 'store']);
 Route::get('blog', function () {
     return view('client.pages.blog-single');
 })->name('blog');
@@ -53,8 +66,7 @@ Route::get('link', function () {
     return view('client.pages.post-link');
 })->name('link');
 
-Route::post('store-contact',[ContactController::class,'store']);
 
-Route::get('view',function(){
+Route::get('view', function () {
     view('client.pages.view');
 })->name('view');

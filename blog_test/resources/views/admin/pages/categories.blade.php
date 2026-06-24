@@ -1,3 +1,8 @@
+@extends('admin.layouts.master')
+@section('title', 'Revolve - Personal Magazine blog Template')
+
+@section('content')
+
 @if (session('success'))
     <div>{{ session('success') }}</div>
 @endif
@@ -28,7 +33,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h3 class="mb-0">Categories List</h3>
 
-                            <a href="" class="btn btn-success">
+                            <a href="{{ route('create-category') }}" class="btn btn-success">
                                 <i class="bi bi-plus-circle me-1"></i>
                                 Add Category
                             </a>
@@ -48,28 +53,27 @@
 
                             <tbody>
 
-                                @foreach ($Categories as $category)
+                                @foreach ($categories as $category)
                                     <tr>
-                                        <td></td>
+                                        <td>{{ $category->id }}</td>
 
-                                        <td></td>
+                                        <td>{{ $category->title }}</td>
 
-                                        <td></td>
+                                        <td>{{ $category->description }}</td>
 
 
-                                        <td>
-                                        <td>
+                                        <td>{{ $category->created_at }}<td>
 
                                             <div class="btn-group">
 
-                                                <a href="" class="btn btn-primary btn-sm">
+                                                <a href="{{ route('edit-category' , $category->id) }}" class="btn btn-primary btn-sm">
                                                     Edit
                                                 </a>
 
-                                                <form method="POST" action=""
+                                                <form method="POST" action="{{ route('delete-category') }}"
                                                     onsubmit="return confirm('Are you sure you want to delete this category?')">
 
-                                                    <input type="hidden" name="id" value="">
+                                                    <input type="hidden" name="id" value="{{ $category->id }}">
 
                                                     <button type="submit" class="btn btn-danger btn-sm">
                                                         Delete
@@ -94,3 +98,5 @@
     </section>
 
 </main>
+
+@endsection

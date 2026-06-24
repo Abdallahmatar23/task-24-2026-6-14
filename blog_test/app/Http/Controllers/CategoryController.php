@@ -10,12 +10,14 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
+        // $categories = Category::paginate(10);
         return view('client.pages.fashion', ['categories' => $categories]);
     }
 
     public function admin()
     {
         $categories = Category::all();
+        // dd($categories);
         return view('admin.pages.categories', ['categories' => $categories]);
     }
 
@@ -34,7 +36,7 @@ class CategoryController extends Controller
         ]);
 
         Category::create($request->only('title', 'description'));
-        return redirect()->route('categories.admin')->with('success', 'Category Created Successfully');
+        return redirect()->route('all-categories')->with('success', 'Category Created Successfully');
     }
 
     public function edit(int $id)
@@ -44,7 +46,7 @@ class CategoryController extends Controller
         return view('admin.pages.edit-category', ['category' => $category]);
     }
 
-    public function update(Request $request, int $id)
+    public function update(Request $request)
     {
 
         // (new Category())->update(trim($request->title),trim($request->desc));
@@ -53,16 +55,17 @@ class CategoryController extends Controller
             'title' => 'required',
             'description' => 'required'
         ]);
+        $id = $request->id;
 
         $category = Category::findOrFail($id);
         $category->update($request->only('title', 'description'));
-        return redirect()->route('categories.admin')->with('success', 'Category Updated Successfully');
+        return redirect()->route('all-categories')->with('success', 'Category Updated Successfully');
     }
 
-    public function destroy(int $id)
+    public function destroy(Request $request)
     {
-        Category::findOrFail($id)->delete();
+        Category::findOrFail($request->id)->delete();
 
-        return redirect()->route('categories.admin')->with('success', 'Category Deleted Successfully');
+        return redirect()->route('all-categories')->with('success', 'Category Deleted Successfully');
     }
 }

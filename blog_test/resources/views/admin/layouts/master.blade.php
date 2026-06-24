@@ -6,36 +6,28 @@
  // GITHUB: https://github.com/themefisher/
 -->
 <html lang="en">
-@include('client.layouts.head')
+@include('admin.layouts.head')
 
 <body>
-    <header class="header-top bg-dark py-4">
+    @include('admin.layouts.nav')
+
+    <div class="header-logo py-5 d-none d-lg-block">
         <div class="container">
-            @include('client.layouts.nav')
-        </div>
-    </header>
-    <div class="search-wrap">
-        <div class="overlay">
-            <form action="#" class="search-form">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-10 col-9">
-                            <input type="text" class="form-control" placeholder="Search..." />
-                        </div>
-                        <div class="col-md-2 col-3 text-right">
-                            <div class="search_toggle toggle-wrap d-inline-block">
-                                <i class="ti-close"></i>
-                            </div>
-                        </div>
-                    </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt=""
+                            class="img-fluid w-100"></a>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-    {{-- <main class="py-4"></main> --}}
+
     @yield('content')
-    {{-- </main> --}}
+
+
     @include('client.layouts.footer')
+
+
 </body>
 
 </html>
