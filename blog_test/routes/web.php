@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -14,9 +15,12 @@ Route::get('about', [AboutController::class, 'index'])->name('about');
 
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
 
-Route::get('category', [CategoryController::class, 'index'])->name('category');
+Route::get('categories', [CategoryController::class, 'index'])->name('categories');
+Route::get('category/{id}', [CategoryController::class, 'view'])->name('category');
 
 Route::get('all-categories', [CategoryController::class, 'admin'])->name('all-categories');
+Route::get('all-posts', [PostController::class, 'admin'])->name('all-posts');
+// Route::get('all-users', [UserController::class, 'admin'])->name('all-users');
 
 Route::get('create-category', [CategoryController::class, 'create'])->name('create-category');
 
